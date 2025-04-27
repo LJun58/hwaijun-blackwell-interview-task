@@ -1,0 +1,68 @@
+@use "../../variables.module.scss" as *;
+
+.chooseContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  margin-bottom: 10%;
+  overflow: hidden;
+}
+
+.bgImage {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  max-width: none;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+  object-fit: cover;
+}
+
+.stackContainer {
+  max-width: 1400px;
+  margin: 2% auto;
+  width: 100%;
+}
+
+.chooseMainTitle {
+  font-family: $subTitle !important;
+  font-size: 40px !important;
+  color: $light-blue;
+  text-align: center;
+  margin-bottom: 5% !important;
+}
+
+.chooseItemBox {
+  border-radius: 25px !important;
+  padding: 5px !important;
+  background-color: #fff;
+  display: flex;
+  align-items: center !important;
+}
+
+.iconImage {
+  flex-shrink: 0;
+}
+
+.chooseTitle {
+  font-family: $subTitle !important;
+  color: $dark-blue !important;
+  font-size: 26px !important;
+  font-weight: bold !important;
+  white-space: nowrap;
+}
+
+.description {
+  font-family: $subTitle !important;
+  color: black !important;
+  font-size: 22px !important;
+  flex-grow: 1;
+  max-width: 100%;
+  text-align: left;
+}

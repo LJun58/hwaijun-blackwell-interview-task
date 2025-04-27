@@ -1,0 +1,74 @@
+@use "../../variables.module.scss" as *;
+
+.easyAnalysisTitle {
+  font-family: $subTitle !important;
+  font-size: 40px !important;
+  color: $light-blue;
+  text-align: center;
+  justify-content: left;
+}
+
+.easyAnalysisContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.description {
+  font-family: $subTitle !important;
+  color: $gold;
+  text-align: center;
+  justify-content: center;
+  font-size: 1.2em !important;
+  max-width: 800px;
+}
+
+.phoneContainer {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin: 3em;
+  height: 650px;
+}
+
+.phoneImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.functionCard {
+  position: absolute;
+  width: 250px;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.functionCard1 {
+  top: -5%;
+  left: -50%;
+}
+
+.functionCard2 {
+  top: 18%;
+  right: -38%;
+}
+
+.functionCard3 {
+  top: 35%;
+  left: -50%;
+}
+
+.functionCard4 {
+  bottom: 20%;
+  right: -38%;
+}
+
+.functionCard5 {
+  bottom: -5%;
+  left: -50%;
+}

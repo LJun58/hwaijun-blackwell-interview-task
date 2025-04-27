@@ -1,0 +1,66 @@
+@use "../../variables.module.scss" as *;
+
+.enquiryFormContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  margin-bottom: 10%;
+  overflow: hidden;
+}
+
+.bgImage {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  max-width: none;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+  object-fit: cover;
+}
+
+.contentWrapper {
+  position: relative;
+  z-index: 1;
+  padding: 15% 5% 5% 5%;
+}
+
+.enquiryFormTitle {
+  font-family: $subTitle !important;
+  font-size: 40px !important;
+  color: $light-blue;
+  text-align: center;
+  justify-content: left;
+}
+
+.enquiryForm {
+  margin-top: 5%;
+
+  :global(.MuiInputBase-root) {
+    min-height: 80px;
+  }
+
+  :global(.MuiInputLabel-root) {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 20px;
+    font-family: $subTitle;
+
+    &.Mui-focused {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  :global(.MuiInputBase-input) {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 20px;
+    font-family: $subTitle;
+  }
+}

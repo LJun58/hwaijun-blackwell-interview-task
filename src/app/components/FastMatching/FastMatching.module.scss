@@ -1,0 +1,31 @@
+@use "../../variables.module.scss" as *;
+
+.fastMatchingTitle {
+  font-family: $subTitle !important;
+  font-size: 40px !important;
+  color: $light-blue;
+  text-align: center;
+  justify-content: left;
+}
+
+.fastMatchingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.featureList {
+  font-family: $subTitle !important;
+  font-size: 1.4em !important;
+  margin-top: -1.2em !important;
+}
+
+.description {
+  font-family: $subTitle !important;
+  color: $gold;
+  text-align: center;
+  justify-content: center;
+  font-size: 1.2em !important;
+}
