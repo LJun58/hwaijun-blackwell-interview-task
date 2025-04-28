@@ -11,6 +11,7 @@ import LinkMT4Acc from "./components/LinkMT4Acc/LinkMT4Acc";
 import Choose from "./components/Choose/Choose";
 import NavigateApp from "./components/NavigateApp/NavigateApp";
 import EnquiryForm from "./components/EnquiryForm/EnquiryForm";
+import ScrollToTopButton from "./components/Buttons/ScrollToTopButton";
 
 export default function Home() {
   return (
@@ -33,6 +34,7 @@ export default function Home() {
       <Choose />
       <NavigateApp />
       <EnquiryForm />
+      <ScrollToTopButton />
     </Container>
   );
 }

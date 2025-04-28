@@ -1,13 +1,5 @@
 @use "../../variables.module.scss" as *;
 
-.easyAnalysisTitle {
-  font-family: $subTitle !important;
-  font-size: 40px !important;
-  color: $light-blue;
-  text-align: center;
-  justify-content: left;
-}
-
 .easyAnalysisContainer {
   display: flex;
   flex-direction: column;
@@ -15,6 +7,16 @@
   align-items: center;
   margin-bottom: 20px;
   flex-wrap: wrap;
+  max-width: 1400px;
+  // overflow: hidden;
+}
+
+.easyAnalysisTitle {
+  font-family: $subTitle !important;
+  font-size: 40px !important;
+  color: $light-blue;
+  text-align: center;
+  justify-content: left;
 }
 
 .description {
@@ -29,46 +31,48 @@
 .phoneContainer {
   position: relative;
   width: 100%;
-  max-width: 300px;
-  margin: 3em;
+  max-width: 1400px;
+  margin: 3em auto;
   height: 650px;
+  justify-content: center;
+  align-items: center;
 }
 
 .phoneImage {
   width: 100%;
   height: 100%;
-  object-fit: cover;
   z-index: 1;
 }
 
 .functionCard {
   position: absolute;
   width: 250px;
+  // width: 80%;
   background-color: transparent !important;
   box-shadow: none !important;
 }
 
 .functionCard1 {
   top: -5%;
-  left: -50%;
+  left: -20%;
 }
 
 .functionCard2 {
   top: 18%;
-  right: -38%;
+  right: -15%;
 }
 
 .functionCard3 {
   top: 35%;
-  left: -50%;
+  left: -20%;
 }
 
 .functionCard4 {
   bottom: 20%;
-  right: -38%;
+  right: -15%;
 }
 
 .functionCard5 {
   bottom: -5%;
-  left: -50%;
+  left: -20%;
 }
