@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./Page.module.scss";
+// import styles from "./Page.module.scss";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import HeroSection from "./components/HeroSection/HeroSection";
@@ -11,6 +11,7 @@ import LinkMT4Acc from "./components/LinkMT4Acc/LinkMT4Acc";
 import Choose from "./components/Choose/Choose";
 import NavigateApp from "./components/NavigateApp/NavigateApp";
 import EnquiryForm from "./components/EnquiryForm/EnquiryForm";
+import ScrollToTopButton from "./components/Buttons/ScrollToTopButton";
 
 export default function Home() {
   return (
@@ -21,8 +22,9 @@ export default function Home() {
         flexDirection: "column",
         maxWidth: "1520px",
         margin: "0 auto",
-        paddingTop: "10%",
+        paddingTop: "5%",
         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+        overflow: "hidden",
       }}
     >
       <HeroSection />
@@ -33,6 +35,7 @@ export default function Home() {
       <Choose />
       <NavigateApp />
       <EnquiryForm />
+      <ScrollToTopButton />
     </Container>
   );
 }

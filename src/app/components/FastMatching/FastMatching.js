@@ -23,8 +23,9 @@ export default function FastMatching() {
           Fast Matching
         </Typography>
         <Typography
+          variant="h4"
           className={styles.description}
-          maxWidth={800}
+          // maxWidth={800}
         >
           Zero in on your ideal Master effortlessly. Sort by performance and
           drawdown levels or discover opportunities from new signals with our

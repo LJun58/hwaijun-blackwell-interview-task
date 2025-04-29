@@ -2,10 +2,10 @@
 
 .fastMatchingTitle {
   font-family: $subTitle !important;
-  font-size: 40px !important;
+  // font-size: 40px !important;
   color: $light-blue;
-  text-align: center;
-  justify-content: left;
+  // text-align: center;
+  // justify-content: left;
 }
 
 .fastMatchingContainer {
@@ -24,8 +24,6 @@
 
 .description {
   font-family: $subTitle !important;
-  color: $gold;
-  text-align: center;
-  justify-content: center;
-  font-size: 1.2em !important;
+  color: $gold !important;
+  max-width: 1000px;
 }

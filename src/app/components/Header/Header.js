@@ -1,111 +1,323 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import logo from "../../../../public/logo.png";
 import styles from "./Header.module.scss";
 import Button from "@mui/material/Button";
 import PersonIcon from "@mui/icons-material/Person";
-import { Box, IconButton } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import {
+  Box,
+  Grid,
+  IconButton,
+  Stack,
+  Typography,
+  Menu,
+  MenuItem,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  ListItemIcon,
+  Divider,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import RegisterButton from "../Buttons/RegisterButton";
+import { RegisterModal } from "../Modal/registerModal";
+import useUserStore from "@/app/store/user";
+import CloseIcon from "@mui/icons-material/Close";
+import { LoginModal } from "../Modal/loginModal";
+import CountdownTimer from "./CountdownTimer";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
 export default function Header() {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
-  const [isExpired, setIsExpired] = useState(false);
+  const user = useUserStore((state) => state.user);
+  const logout = useUserStore((state) => state.logout);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [showWelcomeMessage, setShowWelcomeMessage] = useState(true);
+  const [isLoginModal, setIsLoginModal] = useState(false);
+  const [isRegisterModal, setIsRegisterModal] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
-  const targetDate = "2025-12-31T23:59:59";
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+  const handleOpenProfileMenu = (event) => {
+    if (isMobile) {
+      setDrawerOpen(true);
+    } else {
+      setAnchorElUser(event.currentTarget);
+    }
+  };
+
+  const handleCloseProfileMenu = () => {
+    setAnchorElUser(null);
+  };
+
+  const toggleDrawer = (open) => (event) => {
+    if (
+      event &&
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    if (!open && (isRegisterModal || isLoginModal)) {
+      return;
+    }
+
+    setDrawerOpen(open);
+  };
+
+  const handleLogoutClick = () => {
+    logout();
+    setDrawerOpen(false);
+  };
+
+  const handleLoginClick = () => {
+    setIsLoginModal(true);
+  };
+
+  const handleRegisterClick = () => {
+    setIsRegisterModal(true);
+  };
+
+  const handleRegisterModalClose = () => {
+    setIsRegisterModal(false);
+    setDrawerOpen(false);
+  };
+
+  const handleLoginModalClose = () => {
+    setIsLoginModal(false);
+    setDrawerOpen(false);
+  };
 
   useEffect(() => {
-    const calculateTimeLeft = () => {
-      const now = new Date();
-      const endTime = new Date(targetDate);
-      const difference = endTime - now;
+    if (!isMobile && drawerOpen) {
+      setDrawerOpen(false);
+    }
+  }, [isMobile, drawerOpen]);
 
-      if (difference <= 0) {
-        setIsExpired(true);
-        return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-      }
+  useEffect(() => {
+    if (user) {
+      setShowWelcomeMessage(true);
+    }
+  }, [user]);
 
-      return {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / (1000 * 60)) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      };
-    };
+  const drawerContent = (
+    <Box
+      sx={{
+        width: "auto",
+        minWidth: "200px",
+        maxWidth: "90vw",
+        padding: "8px 0",
+      }}
+      role="presentation"
+    >
+      <List>
+        <ListItem disablePadding>
+          <ListItemButton onClick={user ? handleLogoutClick : handleLoginClick}>
+            <ListItemIcon>
+              <PersonIcon />
+            </ListItemIcon>
+            <ListItemText primary={user ? "Logout" : "Login"} />
+          </ListItemButton>
+        </ListItem>
 
-    setTimeLeft(calculateTimeLeft());
-
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [targetDate]);
+        {!user && (
+          <ListItem disablePadding>
+            <ListItemButton onClick={handleRegisterClick}>
+              <ListItemText>
+                <Box sx={{ px: 2, width: "100%" }}>
+                  <Button
+                    variant="contained"
+                    color="register"
+                    fullWidth
+                  >
+                    Register Now
+                  </Button>
+                </Box>
+              </ListItemText>
+            </ListItemButton>
+          </ListItem>
+        )}
+      </List>
+      <Divider />
+      {/*countdown section */}
+      <Box sx={{ p: 2 }}>
+        <Typography
+          variant="subtitle2"
+          fontWeight="bold"
+          sx={{ mb: 1 }}
+        >
+          PROMOTION ENDS IN:
+        </Typography>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <AccessTimeIcon sx={{ mr: 1 }} />
+          <CountdownTimer targetDate="2025-12-31T23:59:59" />
+        </Box>
+      </Box>
+    </Box>
+  );
 
   return (
-    <nav className="sticky top-0 left-0 z-50 ">
+    <nav className="sticky top-0 left-0 z-50">
       <header className={styles.header}>
-        <div className={styles.left}>
-          <Image
-            src={logo}
-            alt="Blackwell Global Logo"
-          />
-        </div>
+        <Grid
+          container
+          alignItems="center"
+          justifyContent="space-between"
+          sx={{ flexWrap: "nowrap", width: "100%", maxWidth: "1520px" }}
+        >
+          <Grid item>
+            <Image
+              src={logo}
+              alt="Blackwell Global Logo"
+              style={{ maxWidth: isMobile ? "120px" : "auto", height: "auto" }}
+            />
+          </Grid>
 
-        <div className={styles.countdown}>
-          <h4>PROMOTION ENDS IN</h4>
-          <div className={styles.countdownItem}>
-            <span className={styles.countdownValue}>{timeLeft.days}</span>
-            <span className={styles.countdownLabel}>Days</span>
-          </div>
-          <div className={styles.countdownItem}>
-            <span className={styles.countdownValue}>
-              {String(timeLeft.hours).padStart(2, "0")}
-            </span>
-            <span className={styles.countdownLabel}>Hours</span>
-          </div>
-          <div className={styles.countdownItem}>
-            <span className={styles.countdownValue}>
-              {String(timeLeft.minutes).padStart(2, "0")}
-            </span>
-            <span className={styles.countdownLabel}>Minutes</span>
-          </div>
-          <div className={styles.countdownItem}>
-            <span className={styles.countdownValue}>
-              {String(timeLeft.seconds).padStart(2, "0")}
-            </span>
-            <span className={styles.countdownLabel}>Seconds</span>
-          </div>
+          {!isMobile && (
+            <Grid>
+              <Stack
+                direction="row"
+                flexWrap="nowrap"
+                spacing={1}
+                justifyContent="center"
+                alignItems="center"
+                textAlign="center"
+              >
+                <Typography
+                  direction="row"
+                  variant="h6"
+                  align="center"
+                  sx={{
+                    wordBreak: "break-word",
+                    whiteSpace: "normal",
+                    width: "7em",
+                    fontSize: { xs: "0.9rem", sm: "1rem", md: "1.25rem" },
+                  }}
+                >
+                  PROMOTION ENDS IN
+                </Typography>
 
-          {isExpired && (
-            <div className={styles.expiredNotice}>
-              <p>ENDED</p>
-            </div>
+                <CountdownTimer targetDate="2025-12-31T23:59:59" />
+              </Stack>
+            </Grid>
           )}
-        </div>
 
-        <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-          <Button
-            variant="contained"
-            color="warning"
-            sx={{ fontWeight: 600 }}
-            //onClick={() => {}}
-          >
-            Register Now
-          </Button>
-          <IconButton
-            color="inherit"
-            aria-label="user account"
-          >
-            <PersonIcon />
-          </IconButton>
-        </Box>
+          <Grid>
+            {isMobile ? (
+              <IconButton
+                onClick={toggleDrawer(true)}
+                color="inherit"
+                aria-label="menu"
+              >
+                <MenuIcon sx={{ fontSize: "2rem" }} />
+              </IconButton>
+            ) : (
+              <Stack
+                direction="row"
+                alignItems="center"
+              >
+                <RegisterButton />
+
+                <Box sx={{ flexGrow: 0 }}>
+                  <IconButton
+                    onClick={handleOpenProfileMenu}
+                    color="inherit"
+                    aria-label="user account"
+                  >
+                    <PersonIcon sx={{ p: 1, fontSize: "3rem" }} />
+                  </IconButton>
+                </Box>
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{ vertical: "top", horizontal: "right" }}
+                  keepMounted
+                  transformOrigin={{ vertical: "top", horizontal: "right" }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseProfileMenu}
+                >
+                  {user ? (
+                    <Button
+                      onClick={handleLogoutClick}
+                      sx={{ my: 2, color: "black", display: "block" }}
+                    >
+                      Logout
+                    </Button>
+                  ) : (
+                    <Button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setIsLoginModal(true);
+                        handleCloseProfileMenu();
+                      }}
+                      sx={{ my: 2, color: "black", display: "block" }}
+                    >
+                      Login
+                    </Button>
+                  )}
+                </Menu>
+              </Stack>
+            )}
+          </Grid>
+        </Grid>
       </header>
+
+      <Drawer
+        anchor="right"
+        open={drawerOpen}
+        onClose={toggleDrawer(false)}
+        PaperProps={{
+          sx: {
+            backgroundColor: "#0d2740",
+            color: "white",
+          },
+        }}
+        ModalProps={{
+          keepMounted: true,
+          disableEnforceFocus: isRegisterModal || isLoginModal,
+        }}
+      >
+        {drawerContent}
+      </Drawer>
+
+      {user && showWelcomeMessage && (
+        <div className={styles.welcomeMessageBackground}>
+          <div className={styles.welcomeMessageContainer}>
+            <Typography
+              variant="h6"
+              className={styles.welcomeMessage}
+            >
+              Hi {user.firstName}, welcome to Blackwell! Please verify your
+              email immediately.
+            </Typography>
+            <IconButton onClick={() => setShowWelcomeMessage(false)}>
+              <CloseIcon />
+            </IconButton>
+          </div>
+        </div>
+      )}
+
+      {isLoginModal && (
+        <LoginModal
+          open={isLoginModal}
+          onClose={handleLoginModalClose}
+        />
+      )}
+
+      {isRegisterModal && (
+        <RegisterModal
+          open={isRegisterModal}
+          onClose={handleRegisterModalClose}
+        />
+      )}
     </nav>
   );
 }

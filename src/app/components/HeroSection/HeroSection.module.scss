@@ -4,13 +4,12 @@
   display: flex;
   background: $background-color;
   flex-direction: row;
-  gap: 150px;
   justify-content: space-between;
-  overflow: hidden;
-  padding-top: 3em;
+  margin-bottom: 10%;
 
   @media (max-width: 1200px) {
     flex-direction: column;
+    padding-bottom: 45%;
   }
 }
 
@@ -22,18 +21,27 @@
 }
 
 .handImage {
-  width: 100vw;
+  width: 100%;
   height: auto;
-  max-width: 800px;
+  min-width: 800px;
   display: block;
   margin-left: -150px;
+  transform: scale(1.5) translate(-15%, 10%);
+
+  @media (max-width: 1200px) {
+    transform: scale(1.5);
+    padding-top: 5%;
+    min-width: 0;
+    max-width: 600px;
+  }
 }
 
 .content {
   flex: 2;
   display: flex;
   flex-direction: column;
-  gap: 8em;
+  gap: 5em;
+  position: relative;
 }
 
 .hideOnMobile {
@@ -54,49 +62,36 @@
 
 .heroTitle {
   font-family: $mainTitle !important;
-  font-size: 60px !important;
   color: $light-blue;
-  text-align: center;
-  justify-content: left;
 }
 
 .heroSubTitle {
   font-family: $subTitle !important;
   color: $light-blue;
-  font-weight: bold !important;
-  font-size: 60px;
   margin-bottom: 10px;
-  text-align: left;
-  justify-content: left;
+  text-align: left !important;
+  justify-content: left !important;
 }
 
 .heroSubTitle2 {
   font-family: $subTitle !important;
   color: $gold;
-  font-size: 60px;
-  margin-bottom: 10px;
-  text-align: left;
-  justify-content: left;
+  margin-bottom: 10px !important;
+  text-align: left !important;
+  justify-content: left !important;
 }
 
 .description {
   font-family: $subTitle !important;
-  color: white;
-  text-align: left;
-  justify-content: left;
 }
 
 .overlapContent {
   @media (max-width: 1200px) {
-    position: relative;
-    top: -25em;
+    position: absolute;
+    top: 72%;
     z-index: 2;
-    padding: 1rem;
-    margin-top: -45px;
     justify-items: flex-end;
     align-self: flex-end;
-
-    max-width: 50%;
-    margin-bottom: -25em;
+    max-width: 60%;
   }
 }
