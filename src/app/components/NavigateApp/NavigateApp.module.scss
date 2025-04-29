@@ -23,9 +23,13 @@
 .tabButton {
   background-color: white !important;
   box-shadow: inset 0px 0px 1px 0px !important;
-  width: 10% !important;
+  min-width: 0 !important;
   border-top-right-radius: 10px !important;
   border-top-left-radius: 10px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 20% !important;
 }
 
 .selectedTab {

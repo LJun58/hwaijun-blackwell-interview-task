@@ -86,6 +86,7 @@ export default function NavigateApp() {
           value={selectedTab}
           onChange={handleTabChange}
           aria-label="Navigate App Tabs"
+          sx={{ width: "90%" }}
           slotProps={{
             indicator: {
               style: {
