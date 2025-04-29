@@ -1,3 +1,25 @@
+## Hwai Jun Blackwell Global Interview Task
+
+#Todo:
+
+- [x] : NextJs App Router with latest version
+- [x] : Use SCSS
+- [x] : Use SCSS : Use MUI for CSS Library
+- [x] : Use SCSS : Use state managment - to store authenticate user data
+- [x] : Use SCSS : Implement the "Delete Task" Feature in Frontend
+- [x] : Use SCSS : Commit all my code into GitHub as public repo
+- [x] : Use SCSS : Responsive view
+- [x] : Use SCSS : Apply promise in signup/signin function
+- [x] : Use SCSS : Create signup/sigin form
+- [x] : Use SCSS : Reusable components/code/function
+- [x] : Use SCSS : Add Scroll to top button
+- [ ] : Apply Animation
+- [ ] : Apply i18n.js
+- [ ] : Apply Notification popup when sigup successful
+- [ ] : Add Facebook, Google account for register/login
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

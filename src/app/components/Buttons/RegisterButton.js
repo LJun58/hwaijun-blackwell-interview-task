@@ -1,19 +1,20 @@
-import { Button, Modal, Box, Typography } from "@mui/material";
+import { Button } from "@mui/material";
 import { useState } from "react";
 import { RegisterModal } from "../Modal/registerModal";
+import useUserStore from "@/app/store/user";
 
 export default function RegisterButton() {
+  const user = useUserStore((state) => state.user);
   const [isShowModal, setIsShowModal] = useState(false);
+
+  if (user) return null;
 
   return (
     <>
       <Button
         variant="contained"
         color="register"
-        onClick={(e) => {
-          setIsShowModal(true);
-          e.stopPropagation();
-        }}
+        onClick={() => setIsShowModal(true)}
       >
         Register Now
       </Button>

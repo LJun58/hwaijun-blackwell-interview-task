@@ -25,6 +25,7 @@ import {
   useTheme,
 } from "@mui/material";
 import RegisterButton from "../Buttons/RegisterButton";
+import { RegisterModal } from "../Modal/registerModal";
 import useUserStore from "@/app/store/user";
 import CloseIcon from "@mui/icons-material/Close";
 import { LoginModal } from "../Modal/loginModal";
@@ -37,6 +38,7 @@ export default function Header() {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [showWelcomeMessage, setShowWelcomeMessage] = useState(true);
   const [isLoginModal, setIsLoginModal] = useState(false);
+  const [isRegisterModal, setIsRegisterModal] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const theme = useTheme();
@@ -62,6 +64,11 @@ export default function Header() {
     ) {
       return;
     }
+
+    if (!open && (isRegisterModal || isLoginModal)) {
+      return;
+    }
+
     setDrawerOpen(open);
   };
 
@@ -72,6 +79,19 @@ export default function Header() {
 
   const handleLoginClick = () => {
     setIsLoginModal(true);
+  };
+
+  const handleRegisterClick = () => {
+    setIsRegisterModal(true);
+  };
+
+  const handleRegisterModalClose = () => {
+    setIsRegisterModal(false);
+    setDrawerOpen(false);
+  };
+
+  const handleLoginModalClose = () => {
+    setIsLoginModal(false);
     setDrawerOpen(false);
   };
 
@@ -97,10 +117,7 @@ export default function Header() {
       }}
       role="presentation"
     >
-      <List
-        onClick={toggleDrawer(false)}
-        onKeyDown={toggleDrawer(false)}
-      >
+      <List>
         <ListItem disablePadding>
           <ListItemButton onClick={user ? handleLogoutClick : handleLoginClick}>
             <ListItemIcon>
@@ -112,10 +129,16 @@ export default function Header() {
 
         {!user && (
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={handleRegisterClick}>
               <ListItemText>
                 <Box sx={{ px: 2, width: "100%" }}>
-                  <RegisterButton fullWidth />
+                  <Button
+                    variant="contained"
+                    color="register"
+                    fullWidth
+                  >
+                    Register Now
+                  </Button>
                 </Box>
               </ListItemText>
             </ListItemButton>
@@ -200,7 +223,7 @@ export default function Header() {
                 direction="row"
                 alignItems="center"
               >
-                {!user && <RegisterButton />}
+                <RegisterButton />
 
                 <Box sx={{ flexGrow: 0 }}>
                   <IconButton
@@ -251,18 +274,15 @@ export default function Header() {
         anchor="right"
         open={drawerOpen}
         onClose={toggleDrawer(false)}
-        TransitionProps={{
-          onExited: () => {
-            if (pendingOpenRegisterModal) {
-              setIsLoginModal(true);
-            }
-          },
-        }}
         PaperProps={{
           sx: {
             backgroundColor: "#0d2740",
             color: "white",
           },
+        }}
+        ModalProps={{
+          keepMounted: true,
+          disableEnforceFocus: isRegisterModal || isLoginModal,
         }}
       >
         {drawerContent}
@@ -284,10 +304,18 @@ export default function Header() {
           </div>
         </div>
       )}
+
       {isLoginModal && (
         <LoginModal
           open={isLoginModal}
-          onClose={() => setIsLoginModal(false)}
+          onClose={handleLoginModalClose}
+        />
+      )}
+
+      {isRegisterModal && (
+        <RegisterModal
+          open={isRegisterModal}
+          onClose={handleRegisterModalClose}
         />
       )}
     </nav>
