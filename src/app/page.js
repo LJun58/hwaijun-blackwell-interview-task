@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./Page.module.scss";
+// import styles from "./Page.module.scss";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import HeroSection from "./components/HeroSection/HeroSection";
