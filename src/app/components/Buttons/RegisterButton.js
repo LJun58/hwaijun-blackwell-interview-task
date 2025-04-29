@@ -9,16 +9,7 @@ export default function RegisterButton() {
     <>
       <Button
         variant="contained"
-        color="warning"
-        sx={{
-          width: "100%",
-          height: "50px",
-          fontSize: { xs: "0.5rem", sm: "1rem", md: "1.3rem" },
-          padding: "0 16px",
-          whiteSpace: "normal",
-          overflow: "hidden",
-          textOverflow: "clip",
-        }}
+        color="register"
         onClick={(e) => {
           setIsShowModal(true);
           e.stopPropagation();

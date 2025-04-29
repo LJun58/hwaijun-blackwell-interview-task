@@ -124,7 +124,7 @@ export default function Header() {
       </List>
       <Divider />
       {/*countdown section */}
-      <Box sx={{ p: 2, bgcolor: "#f5f5f5" }}>
+      <Box sx={{ p: 2 }}>
         <Typography
           variant="subtitle2"
           fontWeight="bold"
@@ -256,6 +256,12 @@ export default function Header() {
             if (pendingOpenRegisterModal) {
               setIsLoginModal(true);
             }
+          },
+        }}
+        PaperProps={{
+          sx: {
+            backgroundColor: "#0d2740",
+            color: "white",
           },
         }}
       >

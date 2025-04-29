@@ -101,12 +101,21 @@ export default function HeroSection() {
               color="ligthBlue"
             />
           </Stack>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              p: 1,
+              m: 1,
+              borderRadius: 1,
+            }}
+          >
+            <RegisterButton />
 
-          <RegisterButton />
-
-          <Typography variant="caption">
-            When you invest, your capital is at risk. Be prudent.
-          </Typography>
+            <Typography variant="caption">
+              When you invest, your capital is at risk. Be prudent.
+            </Typography>
+          </Box>
         </div>
       </div>
     </section>

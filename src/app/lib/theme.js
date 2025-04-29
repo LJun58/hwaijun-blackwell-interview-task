@@ -191,13 +191,76 @@ const theme = createTheme({
         },
       ],
     },
-    MuiButton: {},
-  },
-  MuiContainer: {
-    styleOverrides: {
-      root: {
-        paddingLeft: 0,
-        paddingRight: 0,
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          fontSize: "1.2rem",
+          padding: "10px 20px",
+          borderRadius: "8px",
+          fontWeight: "bold",
+          textTransform: "none",
+          transition: "background-color 0.3s, color 0.3s",
+        },
+
+        containedLogin: {
+          backgroundColor: "#25A599",
+          color: "white",
+          "&:hover": {
+            backgroundColor: "#25A599",
+          },
+        },
+      },
+      variants: [
+        {
+          props: { variant: "contained", color: "register" },
+          style: {
+            borderRadius: "35px",
+            backgroundColor: "#F37406",
+            color: "white",
+            "&:hover": {
+              backgroundColor: "#e46b14",
+            },
+          },
+        },
+        {
+          props: { variant: "contained", color: "confirm" },
+          style: {
+            backgroundColor: "#25A599",
+            color: "#white",
+            "&:hover": {
+              backgroundColor: "#20897f",
+            },
+          },
+        },
+        {
+          props: { variant: "contained", color: "login" },
+          style: {
+            backgroundColor: "#4caf50",
+            color: "white",
+            "&:hover": {
+              backgroundColor: "#388e3c",
+            },
+          },
+        },
+      ],
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          fontSize: "1.2rem",
+          "& label": {
+            fontSize: "1.2rem",
+            color: "black",
+          },
+          "& .MuiInputBase-root": {
+            fontSize: "1.2rem",
+            padding: "10px",
+            color: "black",
+          },
+          "& .MuiFormHelperText-root": {
+            fontSize: "1rem",
+          },
+        },
       },
     },
   },

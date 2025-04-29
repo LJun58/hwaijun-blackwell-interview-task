@@ -13,10 +13,12 @@ import {
   Stack,
   Button,
 } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 export function LoginModal({ open, onClose }) {
   const setUser = useUserStore((state) => state.setUser);
   const [state, formAction, isPending] = useActionState(loginUser, undefined);
+  const theme = useTheme();
 
   useEffect(() => {
     if (state?.success) {
@@ -39,17 +41,21 @@ export function LoginModal({ open, onClose }) {
           sx={{
             bgcolor: "background.paper",
             p: 4,
-            borderRadius: 2,
+            borderRadius: 5,
             width: "80%",
             maxWidth: 600,
-            mx: "auto",
-            mt: "10%",
             outline: "none",
+
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
           }}
         >
           <Typography
-            variant="h5"
+            variant="h3"
             mb={2}
+            color="primary.main"
           >
             Login to Your Account
           </Typography>
@@ -69,6 +75,7 @@ export function LoginModal({ open, onClose }) {
                   key={name}
                 >
                   <TextField
+                    variant="outlined"
                     fullWidth
                     required
                     label={label}
@@ -84,7 +91,7 @@ export function LoginModal({ open, onClose }) {
 
             <Stack
               direction="row"
-              justifyContent="flex-end"
+              justifyContent="space-between"
               spacing={2}
               mt={4}
             >
@@ -98,7 +105,7 @@ export function LoginModal({ open, onClose }) {
               </Button>
               <Button
                 variant="contained"
-                color="primary"
+                color="confirm"
                 type="submit"
                 disabled={isPending}
               >

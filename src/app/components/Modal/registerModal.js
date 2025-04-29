@@ -38,16 +38,20 @@ export function RegisterModal({ open, onClose }) {
           sx={{
             bgcolor: "background.paper",
             p: 4,
-            borderRadius: 2,
+            borderRadius: 5,
             width: "80%",
             maxWidth: 600,
-            mx: "auto",
-            mt: "10%",
             outline: "none",
+
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
           }}
         >
           <Typography
-            variant="h5"
+            color="primary.main"
+            variant="h3"
             mb={2}
           >
             Create Your Account
@@ -93,7 +97,7 @@ export function RegisterModal({ open, onClose }) {
 
             <Stack
               direction="row"
-              justifyContent="flex-end"
+              justifyContent="space-between"
               spacing={2}
               mt={4}
             >
@@ -107,7 +111,7 @@ export function RegisterModal({ open, onClose }) {
               </Button>
               <Button
                 variant="contained"
-                color="primary"
+                color="confirm"
                 type="submit"
                 disabled={isPending}
               >
