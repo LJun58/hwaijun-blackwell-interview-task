@@ -39,7 +39,6 @@ export default function Header() {
   const [isLoginModal, setIsLoginModal] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  // Use MUI's useTheme and useMediaQuery for responsive behavior
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -76,7 +75,6 @@ export default function Header() {
     setDrawerOpen(false);
   };
 
-  // Close drawer when screen size changes from mobile to desktop
   useEffect(() => {
     if (!isMobile && drawerOpen) {
       setDrawerOpen(false);
@@ -92,10 +90,10 @@ export default function Header() {
   const drawerContent = (
     <Box
       sx={{
-        width: "auto", // Auto width based on content
-        minWidth: "200px", // Minimum width to ensure readability
-        maxWidth: "90vw", // Maximum width to prevent overflow on very small screens
-        padding: "8px 0", // Add some vertical padding
+        width: "auto",
+        minWidth: "200px",
+        maxWidth: "90vw",
+        padding: "8px 0",
       }}
       role="presentation"
     >
@@ -124,10 +122,8 @@ export default function Header() {
           </ListItem>
         )}
       </List>
-
       <Divider />
-
-      {/* Countdown Section in Drawer - Now below the register button */}
+      {/*countdown section */}
       <Box sx={{ p: 2, bgcolor: "#f5f5f5" }}>
         <Typography
           variant="subtitle2"
@@ -251,7 +247,6 @@ export default function Header() {
         </Grid>
       </header>
 
-      {/* Drawer for mobile view with content-based width */}
       <Drawer
         anchor="right"
         open={drawerOpen}
@@ -270,7 +265,10 @@ export default function Header() {
       {user && showWelcomeMessage && (
         <div className={styles.welcomeMessageBackground}>
           <div className={styles.welcomeMessageContainer}>
-            <Typography className={styles.welcomeMessage}>
+            <Typography
+              variant="h6"
+              className={styles.welcomeMessage}
+            >
               Hi {user.firstName}, welcome to Blackwell! Please verify your
               email immediately.
             </Typography>

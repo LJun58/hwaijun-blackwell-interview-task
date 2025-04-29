@@ -127,19 +127,19 @@ export default function NavigateApp() {
             >
               <Stack
                 direction="column"
-                gap={5}
+                gap={1}
                 sx={{
                   flexShrink: 1,
                 }}
               >
                 <Typography
-                  variant="h4"
+                  variant="h5"
                   className={styles.reasonTitle}
                 >
                   {reasons[selectedTab].title}
                 </Typography>
                 <Typography
-                  variant="body1"
+                  variant="body2"
                   className={styles.description}
                 >
                   {reasons[selectedTab].description}

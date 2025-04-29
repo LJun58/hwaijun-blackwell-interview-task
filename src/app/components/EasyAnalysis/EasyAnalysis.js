@@ -13,7 +13,10 @@ export default function EasyAnalysis() {
         >
           Easy Analysis
         </Typography>
-        <Typography className={styles.description}>
+        <Typography
+          variant="h4"
+          className={styles.description}
+        >
           Instant clarity on the Masters’ profile. Get a snapshot of their trade
           history, profitability, risk, and portfolio all in one place.
         </Typography>

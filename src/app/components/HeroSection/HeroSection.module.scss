@@ -4,10 +4,11 @@
   display: flex;
   background: $background-color;
   flex-direction: row;
-  gap: 150px;
+  // gap: 150px;
   justify-content: space-between;
   overflow: hidden;
-  padding-top: 3em;
+  // padding-top: 3rem;
+  margin-bottom: 10%;
 
   @media (max-width: 1200px) {
     flex-direction: column;
@@ -54,36 +55,27 @@
 
 .heroTitle {
   font-family: $mainTitle !important;
-  font-size: 60px !important;
   color: $light-blue;
-  text-align: center;
-  justify-content: left;
 }
 
 .heroSubTitle {
   font-family: $subTitle !important;
   color: $light-blue;
-  font-weight: bold !important;
-  font-size: 60px;
   margin-bottom: 10px;
-  text-align: left;
-  justify-content: left;
+  text-align: left !important;
+  justify-content: left !important;
 }
 
 .heroSubTitle2 {
   font-family: $subTitle !important;
   color: $gold;
-  font-size: 60px;
   margin-bottom: 10px;
-  text-align: left;
-  justify-content: left;
+  text-align: left !important;
+  justify-content: left !important;
 }
 
 .description {
   font-family: $subTitle !important;
-  color: white;
-  text-align: left;
-  justify-content: left;
 }
 
 .overlapContent {
@@ -91,7 +83,7 @@
     position: relative;
     top: -25em;
     z-index: 2;
-    padding: 1rem;
+    // padding: 1rem;
     margin-top: -45px;
     justify-items: flex-end;
     align-self: flex-end;
