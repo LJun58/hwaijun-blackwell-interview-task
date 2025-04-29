@@ -7,25 +7,19 @@
   align-items: center;
   margin-bottom: 20px;
   flex-wrap: wrap;
-  max-width: 1400px;
+  // max-width: 1400px;
   // overflow: hidden;
 }
 
 .easyAnalysisTitle {
   font-family: $subTitle !important;
-  font-size: 40px !important;
   color: $light-blue;
-  text-align: center;
-  justify-content: left;
 }
 
 .description {
   font-family: $subTitle !important;
-  color: $gold;
-  text-align: center;
-  justify-content: center;
-  font-size: 1.2em !important;
-  max-width: 800px;
+  color: $gold !important;
+  max-width: 1000px;
 }
 
 .phoneContainer {

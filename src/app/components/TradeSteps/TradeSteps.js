@@ -86,7 +86,10 @@ export default function StepsLayout() {
           textAlign: "center",
         }}
       >
-        <Typography className={styles.tradeStepsTitle}>
+        <Typography
+          variant="h3"
+          className={styles.tradeStepsTitle}
+        >
           Trade Like a Pro in Minutes
         </Typography>
 

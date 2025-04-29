@@ -2,7 +2,6 @@
 
 import IconButton from "@mui/material/IconButton";
 import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
-import { grey } from "@mui/material/colors";
 
 export default function ScrollToTopButton() {
   const scrollToTop = () => {

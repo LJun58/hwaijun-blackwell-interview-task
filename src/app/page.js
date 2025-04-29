@@ -22,8 +22,9 @@ export default function Home() {
         flexDirection: "column",
         maxWidth: "1520px",
         margin: "0 auto",
-        paddingTop: "10%",
+        paddingTop: "5%",
         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+        overflow: "hidden",
       }}
     >
       <HeroSection />

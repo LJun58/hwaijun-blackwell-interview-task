@@ -85,7 +85,7 @@ export default function Choose() {
                   height={100}
                 />
                 <Typography
-                  variant="h6"
+                  variant="h5"
                   className={styles.chooseTitle}
                 >
                   {item.title}

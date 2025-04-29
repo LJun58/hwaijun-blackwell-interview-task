@@ -89,16 +89,50 @@ export default function EnquiryForm() {
 
             <Grid size={{ xs: 12, md: 6 }}>
               <FormControl fullWidth>
-                <InputLabel>Country of Residence</InputLabel>
+                <InputLabel sx={{ fontSize: "1.2rem" }}>
+                  Country of Residence
+                </InputLabel>
                 <Select
                   value={country}
                   onChange={(e) => setCountry(e.target.value)}
                   label="Country of Residence"
                 >
-                  <MenuItem value="Malaysia">Singapore</MenuItem>
-                  <MenuItem value="Vietnam">United States</MenuItem>
-                  <MenuItem value="Thailand">India</MenuItem>
-                  <MenuItem value="Others">Canada</MenuItem>
+                  <MenuItem
+                    value="Malaysia "
+                    sx={{
+                      textAlign: "left",
+                      color: "black",
+                    }}
+                  >
+                    Malaysia
+                  </MenuItem>
+                  <MenuItem
+                    value="Vietnam"
+                    sx={{
+                      textAlign: "left",
+                      color: "black",
+                    }}
+                  >
+                    Vietnam
+                  </MenuItem>
+                  <MenuItem
+                    value="Thailand"
+                    sx={{
+                      textAlign: "left",
+                      color: "black",
+                    }}
+                  >
+                    Thailand
+                  </MenuItem>
+                  <MenuItem
+                    value="Others"
+                    sx={{
+                      textAlign: "left",
+                      color: "black",
+                    }}
+                  >
+                    Others
+                  </MenuItem>
                 </Select>
               </FormControl>
             </Grid>

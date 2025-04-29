@@ -15,9 +15,7 @@
 
 .navigateAppMainTitle {
   font-family: $subTitle !important;
-  font-size: 40px !important;
   color: $light-blue;
-  text-align: center;
 }
 
 .tabButton {
@@ -39,15 +37,13 @@
 .reasonTitle {
   font-family: $subTitle !important;
   color: $dark-blue !important;
-  font-size: 26px !important;
-  font-weight: bold !important;
   white-space: nowrap;
+  text-align: center !important;
+  margin: 5% !important;
 }
 
 .description {
   font-family: $subTitle !important;
-  color: black !important;
-  font-size: 22px !important;
   flex-grow: 1;
   max-width: 100%;
 }

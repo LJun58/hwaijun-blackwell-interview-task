@@ -11,6 +11,7 @@ import {
   Link,
 } from "@mui/material";
 import StoreButtons from "../Buttons/StoreButton";
+import RegisterButton from "../Buttons/RegisterButton";
 
 export default function HeroSection() {
   return (
@@ -28,65 +29,21 @@ export default function HeroSection() {
       <div className={styles.content}>
         <div>
           <Typography
-            variant="h3"
+            variant="h1"
             className={styles.heroTitle}
           >
             COPY TRADING
           </Typography>
           <Typography
-            variant="h4"
+            variant="h2"
             sx={{ fontStyle: "italic", mb: 2, color: "white" }}
-            className={styles.heroTitle}
+            // className={styles.heroSubTitle}
           >
             with Blackwell Invest
           </Typography>
           <StoreButtons />
-          {/* <Stack
-            direction="row"
-            spacing={2}
-            justifyContent="center"
-            mb={3}
-          >
-            <Link
-              href="https://play.google.com/store/apps/details?id=com.BlackwellGlobalInvestmentsUKLimited.pelican&hl=en"
-              target="_blank"
-              rel="noopener"
-            >
-              <Image
-                src="/google-play.jpg"
-                alt="Google Play"
-                width={160}
-                height={50}
-                className="rounded-xl"
-              />
-            </Link>
-            <Link
-              href="https://apps.apple.com/gb/app/blackwell-invest/id1666036351"
-              target="_blank"
-              rel="noopener"
-            >
-              <Image
-                src="/app-store.jpg"
-                alt="App Store"
-                width={160}
-                height={50}
-                className="rounded-xl"
-              />
-            </Link>
-          </Stack> */}
         </div>
         <div className={styles.showOnMobile}>
-          {/* <img
-            src="/hand.png"
-            alt="Blackwell Invest App"
-            style={{
-              width: "100%",
-              maxWidth: "1520px",
-              height: "auto",
-              display: "block",
-              margin: "0 auto",
-            }}
-          /> */}
           <Image
             src="/hand.png"
             alt="Blackwell Invest App"
@@ -97,19 +54,19 @@ export default function HeroSection() {
         </div>
         <div className={styles.overlapContent}>
           <Typography
-            variant="h5"
+            variant="h3"
             className={styles.heroSubTitle}
           >
             Choose & Trade
           </Typography>
           <Typography
-            variant="h5"
+            variant="h3"
             className={styles.heroSubTitle2}
           >
             Ready-To-Go Strategies
           </Typography>
           <Typography
-            variant="body2"
+            variant="body1"
             mb={3}
             className={styles.description}
           >
@@ -126,48 +83,39 @@ export default function HeroSection() {
             <Chip
               label="Forex"
               variant="outlined"
-              sx={{ color: "white", borderWidth: 1.5, borderColor: "yellow" }}
+              color="yellow"
             />
             <Chip
               label="Precious Metals"
               variant="outlined"
-              sx={{
-                color: "white",
-                borderWidth: 1.5,
-                borderColor: "#F37406",
-              }}
+              color="orange"
             />
             <Chip
               label="Oil"
               variant="outlined"
-              sx={{ color: "white", borderWidth: 1.5, borderColor: "red" }}
+              color="red"
             />
             <Chip
               label="Indices"
               variant="outlined"
-              sx={{
-                color: "white",
-                borderWidth: 1.5,
-                borderColor: "#01f2f2",
-              }}
+              color="ligthBlue"
             />
           </Stack>
-          <Button
-            variant="contained"
-            color="warning"
-            sx={{ fontWeight: 600 }}
-
-            //   onClick={() => {}}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              p: 1,
+              m: 1,
+              borderRadius: 1,
+            }}
           >
-            Register Now
-          </Button>
+            <RegisterButton />
 
-          <Typography
-            variant="caption"
-            sx={{ display: "block", mt: 2, fontStyle: "italic" }}
-          >
-            When you invest, your capital is at risk. Be prudent.
-          </Typography>
+            <Typography variant="caption">
+              When you invest, your capital is at risk. Be prudent.
+            </Typography>
+          </Box>
         </div>
       </div>
     </section>
